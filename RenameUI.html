@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <!-- App Script Recommended Sylesheet -->
+  </head>
+  <body>
+    <table id=dataForm>
+      <!-- Tournament Input -->
+      <div>
+        <label for="tournament">Tournament</label><br>
+        <input type="text" style="width: 150;" name="tournament" placeholder="Tournament" id="tournament">
+      </div><br>
+      <!-- Round Input -->
+      <div>
+        <label for="round">Round Number</label><br>
+        <input type="number" style="width: 150;" name="round" placeholder="Round Number" id="round">
+      </div><br>
+      <!-- Side (Aff/ Neg) -->
+      <div>Side</div>
+        <div><input type="radio" name="Side" value="Aff" id="side"> Aff </div>
+        <div><input type="radio" name="Side" value="Neg" id="side"> Neg </div> <br>
+      <!-- Opponent Team Code Input -->
+      <div>
+        <label for="opponent">Opponent's Team Code</label><br>
+        <input type="text" style="width: 150;" name="opponent" placeholder="Opponent's Team Code" id="opponent">
+      </div><br>
+      <!-- Submit/ Exit Buttons -->
+      <div>
+        <input type="button" value="Submit" class="action" onclick="processInputs()">
+      <input type="button" value="Close" onclick="google.script.host.close()" />
+      </div>
+    </table>
+    <script>
+      google.script.host.setWidth(200)
+      google.script.host.setHeight(300)
+      function processInputs() {
+        const inputData = {
+          tournament: document.getElementById('tournament').value,
+          round: document.getElementById('round').value,
+          side: document.getElementById('side').value,
+          opponent: document.getElementById('opponent').value,
+        };
+        google.script.run.SETNAMEFROMINFO(inputData);
+      };
+    </script>
+  </body>
+</html>
